@@ -30,13 +30,13 @@ function initActions(){
     for(const bookImage of imageBooks){
         bookImage.addEventListener('click', function(event){
             event.preventDefault();
-            const bookID = bookImage.getAttribute('data-id');
+            const bookID = event.target.offsetParent.getAttribute('data-id');
             
             if(!favoriteBooks.includes(bookID)){
-                bookImage.classList.add(select.active);
+                event.target.offsetParent.classList.add(select.active);
                 favoriteBooks.push(bookID);
             }else{
-                bookImage.classList.remove(select.active);
+                event.target.offsetParent.classList.remove(select.active);
                 const index = favoriteBooks.indexOf(bookID);
                 console.log('index: ', index);
                 favoriteBooks.splice(index, 1);
